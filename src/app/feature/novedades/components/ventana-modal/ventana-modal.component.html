@@ -1,0 +1,10 @@
+<header mat-dialog-title>
+    <h2>{{ title }}</h2>
+    <button mat-button (click)="close()">
+        <i class="material-icons-outlined">clear</i>
+    </button>
+</header>
+
+<section mat-dialog-content>
+    <ng-container *ngComponentOutlet="data.component"></ng-container>
+</section>

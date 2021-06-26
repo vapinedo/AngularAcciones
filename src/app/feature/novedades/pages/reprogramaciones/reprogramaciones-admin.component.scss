@@ -1,0 +1,72 @@
+@import "src/colores";
+
+.two-panels {
+    gap: 1em;
+    display: flex;
+
+    .box {
+        width: 100%;
+        padding: .5em;
+        background-color: $white;
+
+        .title-breadcrumbs {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+
+          .title {
+              margin: 0;
+              font-weight: 700;
+              color: $primary;
+              font-size: 1.4em;
+              margin-bottom: .6em;
+              font-family: 'Source Sans Pro', sans-serif;
+          }
+        }
+
+        header {
+            gap: 1em;
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+
+            .user-info {
+                display: flex;
+                flex-direction: column;
+
+                span:first-child {
+                    font-weight: bold;
+                    text-transform: uppercase;
+                }
+                span:last-child {
+                    color: gray;
+                }
+            }
+        }
+    }
+}
+
+table {
+    width: 100%;
+
+    tr.detail-row {
+      height: 0;
+    }
+    tr.element-row:not(.expanded-row):hover {
+      background: whitesmoke;
+    }
+    tr.element-row:not(.expanded-row):active {
+      background: #efefef;
+    }
+    .element-row td {
+      border-bottom-width: 0;
+    }
+    .element-detail {
+      overflow: hidden;
+      display: flex;
+    }
+    .row-expanded-detail {
+      width: 100%;
+      padding: 2em 1em;
+    }
+}

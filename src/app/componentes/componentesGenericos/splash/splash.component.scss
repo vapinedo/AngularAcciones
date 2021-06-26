@@ -1,0 +1,37 @@
+@import "../../../../colores.scss";
+.splash {
+    width: 100%;
+    background-image: url("/assets/logo-completa.svg");
+    height: 100%;
+    background-repeat: no-repeat;
+    animation-name: splash;
+    animation-duration: 2s;
+    animation-iteration-count: infinite;
+}
+.contenedor {
+    width: 15vw;
+    height: 15vw;
+}
+
+.estiloMensaje {
+    font-size: 1.2em;
+    font-weight: 500;
+}
+
+@keyframes splash {
+    0% {
+        background-image: url("/assets/logo-completa.svg");
+    }
+    25% {
+        background-image: url("/assets/logo-rojo.svg");
+    }
+    50% {
+        background-image: url("/assets/logo-amarillo.svg");
+    }
+    75% {
+        background-image: url("/assets/logo-azul.svg");
+    }
+    100% {
+        background-image: url("/assets/logo-completa.svg");
+    }
+}

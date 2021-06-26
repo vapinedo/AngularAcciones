@@ -1,0 +1,82 @@
+@import "src/colores";
+
+section {
+    form {
+        .selects {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        button {
+            float: right;
+            margin-top: 1.8em;
+            margin-right: 1em;
+        }
+    }
+
+    table {
+        width: 100%;
+    
+        td, th {
+            padding: 0 1em !important;
+            font-size: .8em !important;
+        }
+    
+        th { height: 40px; }
+        td { height: 35px; }    
+    
+        thead {
+            background-color: $gris-100;
+    
+            th {
+                font-weight: 500;
+                color: $gris-400;
+                padding: 1.2em 1em;
+                text-transform: uppercase;
+            }
+        }
+        tbody {
+            tr, td {
+                padding-left: 0;
+                text-align: left;
+                padding: 1.2em 1em;
+                border-bottom: 1px solid $gris-100;
+            }
+            .tools {
+                text-align: center;
+                i { 
+                    color: $gris-400;
+                    cursor: pointer;
+                    margin-right: .7em; 
+                }
+            }        
+        }
+    }
+
+    ::ng-deep .mat-form-field-appearance-fill .mat-form-field-flex {
+        background-color: $white; 
+    }
+    ::ng-deep .mat-form-field-wrapper {
+        margin-top: 5px;
+        margin-bottom: -10px;
+    }
+}
+
+.formularios50{
+    min-width: 50%;
+     padding: 5px;
+}
+.formularios100{
+    min-width: 100%;
+     padding: 5px;
+}
+
+
+.centrado{
+    text-align: center;
+}
+
+
+.alineado_derecha{
+    text-align: right;
+}

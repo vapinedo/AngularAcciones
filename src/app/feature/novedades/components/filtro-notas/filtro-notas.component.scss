@@ -1,0 +1,40 @@
+@import "src/colores";
+
+.filtros {
+    padding: .4em 0;
+    
+    form {
+        display: flex;
+        align-items: center;
+        padding-bottom: .5em;
+        justify-content: space-between;
+
+        .filtro {
+            width: 170px;
+            margin-right: 1.2em;
+            ::ng-deep .mat-form-field-underline { display: none; }
+        }
+        ::ng-deep .mat-form-field-infix { 
+            margin: 0;
+            display: flex;
+            padding: 10px 0;
+            align-items: center;
+            justify-content: center;
+        }
+        ::ng-deep .mat-form-field-wrapper { 
+            margin: 0;
+            padding: 0;
+        }
+
+        button {
+            width: 45px;
+            min-width: 45px;
+            padding: 0 10px;
+        }
+
+        button.clear {
+            margin-right: .7em;
+            margin-left: -12px;
+        }
+    }
+}

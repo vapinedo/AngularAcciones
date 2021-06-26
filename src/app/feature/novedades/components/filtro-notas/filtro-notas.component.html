@@ -1,0 +1,55 @@
+<section class="filtros">
+
+    <form [formGroup]="form">
+        <mat-form-field appearance="outline" class="filtro">
+            <mat-label>Tienda / Bodega</mat-label>
+            <input 
+                matInput
+                type="text"
+                [matAutocomplete]="auto"
+                formControlName="tienda">
+            <mat-autocomplete autoActiveFirstOption #auto="matAutocomplete">
+                <mat-option *ngFor="let option of filteredTiendas | async" [value]="option">
+                    {{ option }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+
+        <mat-form-field appearance="outline" class="filtro">
+            <mat-label>Estado</mat-label>
+            <input 
+                matInput
+                type="text"
+                formControlName="estado"
+                [matAutocomplete]="estado">
+            <mat-autocomplete autoActiveFirstOption #estado="matAutocomplete">
+                <mat-option *ngFor="let option of filteredEstados | async" [value]="option">
+                    {{ option }}
+                </mat-option>
+            </mat-autocomplete>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline" class="filtro">
+            <mat-label>Fecha inicio</mat-label>
+            <input matInput [matDatepicker]="pickerFechaInicio" formControlName="fechaInicio" autocomplete="off">
+            <mat-datepicker-toggle matSuffix [for]="pickerFechaInicio"></mat-datepicker-toggle>
+            <mat-datepicker #pickerFechaInicio></mat-datepicker>
+        </mat-form-field>
+    
+        <mat-form-field appearance="outline" class="filtro">
+            <mat-label>Fecha fin</mat-label>
+            <input [min]="form.controls.fechaInicio.value" matInput [matDatepicker]="pickerFechaFin" formControlName="fechaFin" autocomplete="off">
+            <mat-datepicker-toggle matSuffix [for]="pickerFechaFin"></mat-datepicker-toggle>
+            <mat-datepicker #pickerFechaFin></mat-datepicker>
+        </mat-form-field>
+
+        <button type="submit" mat-raised-button class="clear">
+            <i class="material-icons-outlined">search_off</i>
+        </button>
+
+        <button type="submit" mat-raised-button color="primary">
+            <i class="material-icons-outlined">search</i>
+        </button>
+    </form>
+
+</section>

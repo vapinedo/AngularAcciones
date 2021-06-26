@@ -1,0 +1,31 @@
+<section>
+
+    <p *ngIf="!isNovedadHabilitada">Esta novedad no se puede gestionar por el estado en que se encuentra</p>
+
+    <form [formGroup]="form" (ngSubmit)="onSubmit()">
+        <mat-form-field appearance="outline" class="fecha">
+            <mat-label>Fecha de reprogramacion</mat-label>
+            <input 
+                readonly
+                matInput 
+                autocomplete="off"
+                [min]="tomorrowDate"
+                [matDatepicker]="fechaReprogramacion" 
+                formControlName="fechaReprogramacion">
+            <mat-datepicker-toggle matSuffix [for]="fechaReprogramacion"></mat-datepicker-toggle>
+            <mat-datepicker #fechaReprogramacion></mat-datepicker>
+        </mat-form-field>
+
+        <div *ngIf="!showSpinner" class="actions">
+            <button 
+                type="submit" 
+                color="primary" 
+                mat-raised-button 
+                [disabled]="form.invalid || !isNovedadHabilitada" 
+                style="margin-right: 1em;">Guardar</button>
+            <button (click)="onFormReset()" type="button" mat-raised-button>Limpiar</button>
+        </div>
+
+        <app-spinner *ngIf="showSpinner"></app-spinner>
+    </form>
+</section>

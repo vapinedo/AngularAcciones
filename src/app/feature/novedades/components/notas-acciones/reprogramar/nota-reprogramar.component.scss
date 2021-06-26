@@ -1,0 +1,9 @@
+form {
+    gap: 1em;
+    display: flex;
+    align-items: center;
+}
+::ng-deep .mat-form-field-wrapper {
+    margin: 0;
+    padding: 0;
+}

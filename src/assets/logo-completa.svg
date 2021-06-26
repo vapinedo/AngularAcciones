@@ -1,0 +1,17 @@
+<svg width="200" height="200" xmlns="http://www.w3.org/2000/svg">
+
+    <g>
+     <title>Layer 1</title>
+     <g stroke="null" transform="matrix(0.8132787504615925,0,0,0.9685329794883727,2.0255202411630497,0.7177627810835929) " id="svg_1">
+      <svg stroke="null" id="svg_2" y="22.02885" x="24.16801" height="100%" width="100%">
+       <g stroke="null" id="svg_3" clip-rule="evenodd" fill-rule="evenodd">
+        <path stroke="null" id="svg_4" d="m88.574,40.573l0,-6.763l20.379,0l0,6.767l17.24,0.002l33.486,35.466l0,51.103c-42.252,0 -84.504,-0.027 -126.757,-0.027l0,-49.546l34.394,-37.005l21.258,0.003z"/>
+        <path stroke="null" id="svg_5" d="m44.614,76.971l46.028,0l-23.013,-24.67l-23.015,24.67z" fill="#fbd500"/>
+        <path stroke="null" id="svg_6" d="m41.183,118.861l51.918,0l0,-33.62l-51.918,0l0,33.62z" fill="#dd0021"/>
+        <path stroke="null" id="svg_7" d="m101.404,118.889l50.016,0l0,-33.621l-50.016,0l0,33.621z" fill="#fff"/>
+        <path stroke="null" id="svg_8" d="m149.303,77.008l-26.639,-28.169l-47.001,-0.007l26.284,28.176l47.356,0z" fill="#0071ce"/>
+       </g>
+      </svg>
+     </g>
+    </g>
+   </svg>

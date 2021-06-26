@@ -1,0 +1,25 @@
+<section class="cards-wrapper">
+    <ng-template [ngIf]="showSpinner" [ngIfElse]="content">
+        <app-facebook-loader></app-facebook-loader>
+    </ng-template>
+    
+    <ng-template #content>
+        <article 
+            class="card" 
+            [routerLink]="item.path"
+            routerLinkActive="active" 
+            *ngFor="let item of data"
+            [routerLinkActiveOptions]="{ exact: true }">
+            <div class="icon">
+                <i class="material-icons-outlined">{{ item.icono }}</i>
+            </div>
+            <div class="content">
+                <p class="stats">
+                    <span class="count">{{ item.total }}</span>
+                    <span class="percent">{{ item.porcentaje }}%</span>
+                </p>
+                <h3 class="title">{{ item.nombre }}</h3>
+            </div>
+        </article>
+    </ng-template>
+</section>

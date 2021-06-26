@@ -1,0 +1,27 @@
+@import "src/colores.scss";
+
+header {
+    gap: 1em;
+    display: flex;
+    margin: 1em auto;
+    align-items: center;
+    margin-bottom: 2em;
+    justify-content: flex-start;
+
+    table {
+        width: 100%;
+        
+      td {
+        color: $gris-400;
+      }
+      th {
+        color: #888;
+        font-weight: 600;
+        text-transform: capitalize;
+      }
+      td, th { 
+        font-size: .9em;
+        text-align: center; 
+      }
+    }
+}  

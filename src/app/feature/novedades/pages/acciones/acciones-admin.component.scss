@@ -1,0 +1,69 @@
+@import "src/colores";
+.box {
+    width: 100%;
+    padding: 1em;
+    background-color: $white;
+    .title-breadcrumbs {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        .title {
+            margin: 0;
+            font-weight: 700;
+            color: $primary;
+            font-size: 1.4em;
+            margin-bottom: .6em;
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+    }
+ 
+    .mat-expansion-panel-header-title, .mat-expansion-panel-header-description {
+      gap: .7em;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+    }
+    .mat-expansion-panel-header-title {
+        .title {
+            font-size: .9em;
+            text-transform: uppercase;
+        }
+        .title,
+        .icon {
+            color: #9e9b9b;
+        }
+    }
+    .mat-expanded,
+    .mat-expansion-panel:hover {
+        .title {
+            font-weight: 600;
+        }
+        .icon,
+        .title {
+            color: $primary;
+        }
+    }
+}
+
+table {
+    width: 100%;
+    tr.detail-row {
+        height: 0;
+    }
+    tr.element-row:not(.expanded-row):hover {
+        background: whitesmoke;
+    }
+    tr.element-row:not(.expanded-row):active {
+        background: #efefef;
+    }
+    .element-row td {
+        border-bottom-width: 0;
+    }
+    .element-detail {
+        overflow: hidden;
+        display: flex;
+    }
+    .row-expanded-detail {
+        padding: 16px;
+    }
+}

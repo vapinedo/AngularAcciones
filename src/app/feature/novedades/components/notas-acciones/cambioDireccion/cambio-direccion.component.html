@@ -1,0 +1,62 @@
+<section>
+
+    <p *ngIf="!isNovedadHabilitada">Esta novedad no se puede gestionar por el estado en que se encuentra</p>
+
+    <div>
+        <agm-map [latitude]="lat" [zoom]="zoom" [longitude]="lng">
+            <agm-marker [latitude]="lat" [longitude]="lng"></agm-marker>
+        </agm-map>
+    </div>
+    <br>
+    <div [formGroup]="form" class="flex-box">
+        <mat-form-field appearance="outline" class="fecha" style="width:25%;">
+            <mat-label>Fecha de reprogramacion</mat-label>
+            <input 
+                readonly
+                matInput 
+                autocomplete="off"
+                [min]="tomorrowDate"
+                [matDatepicker]="fechaRepro" 
+                formControlName="fechaRepro">
+            <mat-datepicker-toggle matSuffix [for]="fechaRepro"></mat-datepicker-toggle>
+            <mat-datepicker #fechaRepro></mat-datepicker>
+        </mat-form-field>
+        
+        <mat-form-field appearance="outline" style="width:25%; margin-left: 10px">
+            <mat-label>Seleccione un departamento</mat-label>
+            <mat-select (ngModelChange)="onChangeDepartamento($event)" formControlName="departamento">
+                <mat-option *ngFor="let dep of departamentos" [value]="dep.idDpto">
+                    {{dep.nombreDpto}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field *ngIf="ciudades.length>0" appearance="outline" style="width:25%; margin-left: 10px">
+            <mat-label>Seleccione una ciudad</mat-label>
+            <mat-select (ngModelChange)="onChangeCiudad($event)" formControlName="ciudad">
+                <mat-option *ngFor="let ciu of ciudades" [value]="ciu.codDane">
+                    {{ciu.nombreCiudad}}
+                </mat-option>
+            </mat-select>
+        </mat-form-field>
+        <mat-form-field *ngIf="ciudades.length>0 && departamentos.length>0" appearance="outline" style="width:25%; margin-left: 10px">
+            <mat-label>Dirección*</mat-label>
+            <input matInput formControlName="direccion" placeholder="Ingrese la dirección" autocomplete=off>
+        </mat-form-field>
+        <div class="flex-box">
+            <button *ngIf="ciudades.length>0 && departamentos.length>0" type="submit" mat-raised-button style="margin: 0 10px" (click)="consultarApiNormalizacion()" [disabled]="form.invalid">
+                <i class="material-icons-outlined">search</i>
+            </button>
+            <button 
+                type="submit" 
+                color="primary" 
+                mat-raised-button 
+                (click)="guardar()" 
+                matTooltip="Guardar" 
+                [disabled]="isCambioDireccion || !isNovedadHabilitada"
+                *ngIf="ciudades.length>0 && departamentos.length>0">
+                <i class="material-icons-outlined">save</i>
+            </button>
+        </div>
+
+    </div>
+</section>

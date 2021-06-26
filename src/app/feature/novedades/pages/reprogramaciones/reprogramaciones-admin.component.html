@@ -1,0 +1,104 @@
+<section class="animate__animated animate__fadeIn animate_faster">
+    
+    <div class="two-panels">
+        <!-- <app-sidebar [data]="tipoDevoluciones"></app-sidebar> -->
+        
+        <article class="box">
+            <nav class="title-breadcrumbs">
+                <h2 class="title">Retención</h2>
+            </nav>
+
+            <header>
+                <app-filtro-notas (onFilterChange)="onFiltersChange($event)"></app-filtro-notas>
+                <div class="user-info">
+                    <span>Jhon Doe</span>
+                    <span>Tienda Calle 80</span>
+                </div>
+            </header>            
+
+            <ng-template [ngIf]="showSpinner" [ngIfElse]="content">
+                <app-spinner></app-spinner>
+            </ng-template>
+
+            <ng-template #content>
+                <div class="table-search">
+                    <div class="input-search">
+                        <mat-icon>search</mat-icon>
+                        <input matInput 
+                            #inputSearch
+                            placeholder="Buscar ..." 
+                            autocomplete="off" 
+                            (keyup)="applyFilter($event)">
+                    </div>
+                </div>
+
+                <table mat-table [dataSource]="dataSource" matSort multiTemplateDataRows class="asw-table">
+                    <ng-container matColumnDef="sticker">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>NP</th>
+                        <td mat-cell *matCellDef="let item">{{ item.np }}</td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="fecha">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Fecha</th>
+                        <td mat-cell *matCellDef="let item">{{ item.fecha }}</td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="nombres">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Nombres</th>
+                        <td mat-cell *matCellDef="let item">{{ item.nombres }}</td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="apellidos">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Apellido</th>
+                        <td mat-cell *matCellDef="let item">{{ item.apellidos }}</td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="telefono">
+                        <th mat-header-cell *matHeaderCellDef>Teléfono</th>
+                        <td mat-cell *matCellDef="let item">{{ item.telefono }}</td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="estado">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header>Estado</th>
+                        <td mat-cell *matCellDef="let item">{{ item.estado }}</td>
+                    </ng-container>
+            
+                    <ng-container matColumnDef="id">
+                        <th mat-header-cell *matHeaderCellDef>Acciones</th>
+                        <td mat-cell *matCellDef="let item" class="tools">
+                            <i matTooltip="Editar" routerLink="acciones" class="material-icons-outlined">
+                                mode_edit_outline
+                            </i>
+                        </td>
+                    </ng-container>
+
+                    <ng-container matColumnDef="expandedDetail">
+                        <td mat-cell *matCellDef="let element" [attr.colspan]="displayedColumns.length">
+                        <div 
+                            class="element-detail" 
+                            [@detailExpand]="element == expandedElement ? 'expanded' : 'collapsed'">
+                            <div class="row-expanded-detail">
+                                <app-nota-detalle></app-nota-detalle>
+                            </div>
+                        </div>
+                        </td>
+                    </ng-container>
+
+                    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                    <tr mat-row *matRowDef="let element; columns: displayedColumns;"
+                        class="element-row"
+                        [class.expanded-row]="expandedElement === element"
+                        (click)="expandedElement = expandedElement === element ? null : element">
+                    </tr>
+                    <tr mat-row *matRowDef="let row; columns: ['expandedDetail']" class="detail-row"></tr>
+
+                    <tr class="mat-row" *matNoDataRow>
+                        <td class="mat-cell" colspan="4">No se encontraron registros</td>
+                    </tr>
+                </table>
+                <mat-paginator showFirstLastButtons [pageSizeOptions]="[5, 10, 25, 100]"></mat-paginator>
+            </ng-template>
+        </article>
+    </div>
+    
+</section>

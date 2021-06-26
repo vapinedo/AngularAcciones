@@ -1,0 +1,49 @@
+<section class="animate__animated animate__fadeIn animate_faster">
+    <article class="box">
+
+    <nav class="title-breadcrumbs">
+      <h2 class="title">Gestionar Novedad</h2>
+    </nav>
+
+    <app-nota-cabecera [notaPedido]="notaPedido"></app-nota-cabecera>
+
+        <mat-accordion>
+            <mat-expansion-panel (opened)="panelOpenState=true" (closed)="panelOpenState=false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <i class="material-icons-outlined icon">event</i>
+                        <span class="title">Reprogamar fecha de entrega</span>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+        <app-nota-reprogramar [notaPedido]="notaPedido" [datosUrl]="datosUrl"></app-nota-reprogramar>
+
+      </mat-expansion-panel>
+
+
+            <mat-expansion-panel (opened)="panelOpenState=true" (closed)="panelOpenState=false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <i class="material-icons-outlined icon">room</i>
+                        <span class="title">Cambiar dirección de envío</span>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <app-cambio-direccion [notaPedido]="notaPedido"></app-cambio-direccion>
+            </mat-expansion-panel>
+
+            <mat-expansion-panel (opened)="panelOpenState=true" (closed)="panelOpenState=false">
+                <mat-expansion-panel-header>
+                    <mat-panel-title>
+                        <i class="material-icons-outlined icon">reply</i>
+                        <span class="title">Gestionar devoluciones</span>
+                    </mat-panel-title>
+                </mat-expansion-panel-header>
+
+                <app-nota-devolucion></app-nota-devolucion>
+
+            </mat-expansion-panel>
+        </mat-accordion>
+
+    </article>
+</section>

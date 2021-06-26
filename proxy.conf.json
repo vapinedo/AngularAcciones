@@ -1,0 +1,7 @@
+{
+    "/Normalizacion/api/*": {
+        "target": "http://10.23.14.240:7619/",
+        "secure": false,
+        "changeOrigin": true
+    }
+}

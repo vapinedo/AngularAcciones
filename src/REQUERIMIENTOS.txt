@@ -1,0 +1,47 @@
+PANTALLA ACCIONES - REQUERIMIENTOS LINEA 37 EXCEL 
+
+1. Por URL se mandan los campos sticker, tipo novedad y modulo que llama
+1. Guardar estos parametros en local storage
+3. cosumir dianmico, que devuvele acciones x tipo de novedad
+4. mostrar solo acordeones segun acciones habilitadas
+  
+http://localhost:4200/acciones/Sticker/IdDespachoDtll/TipoNovedad/Modulo/?token=RUIM10
+
+http://localhost:4200/acciones/242424/1234/1/5/?token=RUIM10
+
+LINEA 41 EXCEL - CABECERA NOTAS
+
+1. levantar proyecto control entregas
+2. analizar servicios o dinamicos que consumen la data de la cabecera en la segunda pantalla
+3. usar esos servicios para pintar esa cabecera en la pantalla de acciones de los acordeones
+4. consumir dinamico que retorna el ususario y gudardarlo en sssion
+5. Hacer 3 consumos de servicio, los 3 primeros servicios 
+
+	- servicio 1 
+	{"Tag":"GETTUSUARI","Parametros":"#PERE07","Separador":"#"}
+	
+	
+	- servicio 2 SLTCONFIG
+	{"Tag":"SLTCONFIG","Parametros":"#SLTJCONENT","Separador":"#"}
+	
+	
+	- servicio 3 
+	{"Tag":"SLTENCNOVE","Parametros":"#261500024325","Separador":"#"}
+
+
+LINEA 50, 51 y 52 EXCEL
+	
+	- Dinamico para consumir tabla de reprogramaciones
+	 {"Tag":"SLTDETNOVE","Parametros":"#261500024325#16198","Separador":"#"}
+
+	- preguntar a hernan cual dinamico se usa para guardar las reprogramaciones
+
+
+	REPROGRAMACION ACORDEON 1
+
+		1. Agregar campo de fecha ( fecha superio a dia actual )
+		2. quitar tabla y agregar el campo de fecha del acordeon 1
+		3. consumir servicio para guardar la fecha:
+			- fecha
+			- sticker 
+		4. 	

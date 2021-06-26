@@ -1,0 +1,86 @@
+@import "src/colores";
+
+.cards-wrapper {
+    width: 220px;
+    
+    .card {
+        width: 100%; 
+        cursor: pointer;
+        display: flex;
+        background: $white;
+        margin-bottom: 1em;
+        transition: all .3s;
+        box-sizing: border-box;
+        justify-content: flex-start;
+
+        .icon {
+            width: 80px;
+            display: flex;
+            align-items: center;
+            transition: all .1s;
+            justify-content: center;
+            background-color: $greey;
+
+            i {
+                opacity: .7;
+                color: $white;
+                font-size: 3.5em;
+                transition: all .3s;
+            }
+        }
+        .content {
+            width: 170px;
+            padding: .7em;
+
+            .stats {
+                margin: 0;
+                gap: 2.5em;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                
+                .count {
+                    color: #bfa7a7;
+                    font-weight: 600;
+                    font-size: 1.4em;
+                }
+                .percent {
+                    color: $greey;
+                    font-size: 1em;
+                    font-weight: 500;
+                }
+            }
+            .stats, .title, .percent {
+                color: #444;
+                transition: all .3s;
+                font-family: 'Source Sans Pro', sans-serif;
+            }
+            .title {
+                margin: 0;
+                color: #999;
+                font-size: .9em;
+                font-weight: 400;
+                transition: all .3s;
+            }   
+        }
+    }
+
+    .card:hover, .active {
+        .icon i {
+            opacity: 1;
+        }
+        .icon, .content {
+            background-color: $primary !important;
+        }       
+        .content {
+            .stats {
+                .count, .percent {
+                    color: $white;
+                }
+            }
+            .title {
+                color: $white;
+            }
+        }       
+    }
+}

@@ -1,0 +1,25 @@
+<header>
+  <table>
+    <tr>
+      <th>Nota</th>
+      <th>Estado Nota Pedido</th>
+      <th>Estado Novedad</th>
+      <th>Transportadora</th>
+      <th>Tipo Novedad</th>
+      <th>Tipo de entrega</th>
+      <th>Promesa entrega</th>
+      <th>Fecha entrega</th>
+    </tr>
+    
+    <tr >
+      <td>{{ notaPedido?.NP_GCF }}</td>
+      <td>{{ notaPedido?.ESTADO_NP }}</td>
+      <td>{{ notaPedido?.NOM_EST_NOVE }}</td>
+      <td>{{ notaPedido?.EMP_TRANSP }}</td>
+      <td>{{ notaPedido?.NOM_TIP_NOVEDAD }}</td>
+      <td>{{ notaPedido?.TIPO_ENTREGA }}</td>
+      <td>{{ notaPedido?.PROMESA_CLIENTE }}</td>
+      <td>{{ notaPedido?.FECHA_ENTREGA }}</td>
+    </tr>
+  </table>
+</header>

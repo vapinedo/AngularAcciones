@@ -1,0 +1,209 @@
+<section>
+
+  <p *ngIf="!isNovedadHabilitada">Esta novedad no se puede gestionar por el estado en que se encuentra</p>    
+
+    <div >
+        
+        <form [formGroup]="formHeader" >
+            <!-- <div fxLayout="column" fxLayout.sm="column" fxLayout.xs="column" fxLayoutGap="space-around"> -->
+                <!-- <div fxFlex> -->
+                  <div style="padding-bottom: 10px;">
+
+                <div style="display: flex;">
+                  <div style="min-width: 50%; padding: 5px;">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Usuario quien gestiona la devolución</mat-label>
+                        <input matInput type="text" placeholder="Usuario quien gestiona la devolución" maxlength="50"
+                          autocomplete="off" [(ngModel)]="nombreGestion" formControlName="usuario">
+                        <mat-hint align="end">
+                          {{nombreGestion?.length || 0}}
+                          /50
+                        </mat-hint>
+                      </mat-form-field>
+                <!-- </div> -->
+                <!-- <div fxFlex> -->
+                    
+                <!-- </div> -->
+                <!-- <div fxFlex> -->
+                </div>
+                <div class="formularios50">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Devolución acordada</mat-label>
+                        <mat-select formControlName="devolucionAcordada" placeholder="Devolución acordada"
+                        (selectionChange)="cambioMetodoDevolucion($event.value)" [(ngModel)]="metodoDevolucion">
+                            <mat-option value="">Seleccionar</mat-option>
+                            <mat-option *ngFor="let item of opcionesDevolucion" [(value)]="item.VALOR">
+                            {{ item.NOMBRE }}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+
+                <div style="display: flex;">
+                    <div *ngIf="mostrarMedios" class="formularios100">
+                        <mat-form-field [formGroup]="formTelefono" appearance="outline" style="width: 100%;">
+                          <mat-label>Medio de devolución:</mat-label>
+                          <mat-select  formControlName="medioControl">
+                            <mat-option value="">Seleccionar</mat-option>
+                            <mat-option *ngFor="let medio of medios" [value]="medio.LLAVE">
+                              {{medio.VALOR}}
+                            </mat-option>
+                          </mat-select>
+                        </mat-form-field>
+                    </div>
+                </div>
+
+                <div style="display: flex;" *ngIf="mostrarNotas">
+                      
+                      <div class="formularios50">
+                        <mat-form-field [formGroup]="formTelefono" appearance="outline" style="width: 100%;">
+                          <mat-label>Nota Pedido</mat-label>
+                          <input matInput required type="text" placeholder="Nota pedido" autocomplete="off" [(ngModel)]="notaPedido"
+                            readonly formControlName="notaPedidoControl">
+                        </mat-form-field>
+                       </div>
+          
+                       <div class="formularios50">
+                            <mat-form-field  appearance="outline" style="width: 100%;">
+                              <mat-label>Buscar NP</mat-label>
+                              <input matInput type="text" placeholder="Buscar NP" autocomplete="off" [(ngModel)]="buscarNP"
+                                [ngModelOptions]="{standalone: true}" (keydown.enter)="accionBuscarNP()">
+                              <a mat-button matSuffix mat-icon-button aria-label="Clear" (click)="accionBuscarNP()">
+                                <mat-icon>search</mat-icon>
+                              </a>
+                            </mat-form-field>
+                          </div>
+                       
+
+                </div>
+
+              <div style="display: flex;">
+                <div class="formularios50">
+                  <mat-form-field appearance="outline" style="width: 100%;">
+                    <mat-label>Correo</mat-label>
+                    <mat-select (selectionChange)="seleccionCorreo($event)" formControlName="correoControl">
+                        <mat-option value="">Seleccionar</mat-option>
+                        <mat-option *ngFor="let option of correos" [value]="option">
+                            {{option.descripcion}}
+                        </mat-option>
+                    </mat-select>
+                </mat-form-field>
+              </div>
+
+                <!-- </div> -->
+                <!-- <div fxFlex> -->
+                  <div class="formularios50">
+                    <mat-form-field appearance="outline" style="width: 100%;">
+                        <mat-label>Teléfono</mat-label>
+                        <mat-select (selectionChange)="seleccionTelefono($event)" formControlName="telefonoControl">
+                            <mat-option value="">Seleccionar</mat-option>
+                            <mat-option *ngFor="let option of telefonos" [value]="option">
+                                {{option.descripcion}}
+                            </mat-option>
+                        </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+                <!-- </div> -->
+            <!-- </div>        -->
+
+            
+            
+            <div style="display: flex;">
+                <div  class="formularios50">
+                  <mat-form-field [formGroup]="formTelefono" *ngIf="showInputCorreo"
+                    style=" width: 100%;" appearance="outline">
+                    <mat-label>Nuevo Correo</mat-label>
+                    <input matInput type="email" placeholder="Nuevo Correo" autocomplete="off"
+                      formControlName="correoNuevo" maxlength="50" required>
+                    <mat-error *ngIf="formTelefono.get('correoNuevo')!.hasError('pattern')">
+                      El correo posee un formato inválido
+                    </mat-error>
+                    <mat-hint align="end">
+                      {{formTelefono.get('correoNuevo')!.value?.length || 0}}
+                      /50
+                    </mat-hint>
+                  </mat-form-field>
+                </div>
+                <div  class="formularios50" >
+                  <mat-form-field [formGroup]="formTelefono" style=" width: 100%;"
+                    *ngIf="showInputTelefono" appearance="outline" >
+                    <mat-label>Nuevo Teléfono</mat-label>
+                    <input (contextmenu)='$event.preventDefault();' (keydown.control.v)="$event.preventDefault();"
+                      onkeypress="return ((event.charCode >= 48 && event.charCode <= 57)  || event.charCode <= 8)"
+                      maxlength="10" minlength="7" required matInput type="text" placeholder="Nuevo Teléfono"
+                      autocomplete="off" formControlName="telefonoNuevo">
+                    <mat-hint align="end" *ngIf="!formTelefono.get('telefonoNuevo')!.hasError('pattern')">
+                      {{formTelefono.get('telefonoNuevo')!.value?.length || 0}}
+                      /10
+                    </mat-hint>
+                  </mat-form-field>
+                </div>
+              </div>
+
+          </div>
+        
+        </form>
+    </div>
+
+    <table>
+        <thead>
+            <tr>
+                <th>SKU</th>
+                <th>Descripcion</th>
+                <th class="centrado">Cantidad NP</th>
+                <th class="centrado">Cantidad a Devolver</th>
+                <th class="centrado">Motivo de Devolución</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let item of data; let i = index">
+                <td>{{ item['SKU'] }}</td>
+                <td>{{ item['DESCRIPCION'] }}</td>
+                <td style="text-align: right;">{{ item['CANTIDAD_ENVIADA'] }}</td>
+
+                <td  style="text-align: center;">
+                    <mat-form-field appearance="outline" class="alineado_derecha" style="width: 20vh; height: 7vh;">
+                      <input matInput  [(ngModel)]="item['CANTIDAD_DEVOLVER']"
+                         type="number" (keyup)="onkeyUpDevolver(item)" max ="{{item.CANTIDAD_ENVIADA}}"
+                         (keydown)="onKeydown($event)" (ngModelChange)="contarDevoluciones()" min="0"
+                        pattern="^[0-9]+" autocomplete=off >
+                    </mat-form-field>
+                  </td>
+
+                <td style="text-align: center;">
+                    <mat-form-field appearance="outline" style="width: 50vh;">
+                    <mat-select  [(ngModel)]="item['MOTIVO_DEVOLVER']" >
+                        <mat-option *ngFor="let motivo of motivos" [value]="motivo['ID_MOTIVO']">
+                        {{motivo['NOMBRE']}}
+                        </mat-option>
+                    </mat-select>
+                    </mat-form-field>
+                </td>
+
+            </tr>
+        </tbody>
+    </table>
+    <br>
+    <br>
+    
+  
+    
+    <div style="text-align: right; padding-bottom: 1rem;">
+      <button type="reset" mat-raised-button matTooltip="Limpiar Campos" style="margin-right: 1rem;" (click)="limpiarCampos()">
+          <i class="material-icons-outlined">clear</i>
+      </button>
+      <button 
+        type="submit" 
+        color="primary" 
+        mat-raised-button 
+        matTooltip="Guardar" 
+        (click)="guardar()"
+        [disabled]="!isNovedadHabilitada">
+          <i class="material-icons-outlined">save</i>
+      </button>
+  </div>
+
+    
+</section>
